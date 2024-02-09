@@ -8,11 +8,15 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -89,7 +93,19 @@ function App(): React.JSX.Element {
           <Section title="Learn More">
             Read the docs to discover what to do next:
           </Section>
+          <TextInput
+            placeholder="Enter your name"
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{borderWidth: 1, borderColor: 'black', padding: 10}}
+          />
           <LearnMoreLinks />
+          <KeyboardAvoidingView
+            behavior="padding"
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 90}>
+            <TouchableOpacity>
+              <Text>Click me</Text>
+            </TouchableOpacity>
+          </KeyboardAvoidingView>
         </View>
       </ScrollView>
     </SafeAreaView>
